@@ -7,16 +7,18 @@ En effet, chaque jour des dizaines d'objets sont perdus dans les gares parisienn
 
 ​
 
-++A partir de l’API open data de la sncf.++
+++A partir de l’API open data de la sncf.++      --------------- FAIT  -----------------
 
     Requeter la base de données des objets trouvés pour récupérer les données entre 2019 et 2022 sur les gares parisiennes
     Stocker les données dans une BDD SQL de votre choix dont vous aurez au préalable réalisé le schéma.
 
 - Bonus: écrivez un script permettant d’alimenter chaque jour votre BDD avec les nouvelles données.
 
-++A partir d’internet:++
+++A partir d’internet:++                           -----------  FAIT  -----------------
 
-    Récupérer la liste des températures journalières sur Paris en France entre 2019 et 2022. (1 température moyenne par jour, à trouver ou à recalculer).
+Récupérer la liste des températures journalières sur Paris en France entre 2019 et 2022. (1 température moyenne par jour, 
+à trouver ou à recalculer).
+
 
 ++Data analyse VISUALISATION. - (Sur un streamlit)++
 
