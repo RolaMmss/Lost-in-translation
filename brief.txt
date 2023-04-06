@@ -13,9 +13,10 @@ A l'aide des données de la SNCF et d'autres données, essayez de creuser cette 
 
 ​
 
-++A partir de l’API open data de la sncf.++
+++A partir de l’API open data de la sncf.++       FAIT
 
 Requeter la base de données des objets trouvés pour récupérer les données entre 2019 et 2022 sur les gares parisiennes
+
 Stocker les données dans une BDD SQL de votre choix dont vous aurez au préalable réalisé le schéma.
 - Bonus: écrivez un script permettant d’alimenter chaque jour votre BDD avec les nouvelles données.
 
