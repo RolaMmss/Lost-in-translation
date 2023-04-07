@@ -70,3 +70,4 @@ get_temperature(1680788399)
 # print("2020:", temperatures_2020)
 # print("2021:", temperatures_2021)
 # print("2022:", temperatures_2022)
+
