@@ -24,14 +24,23 @@ Stocker les données dans une BDD SQL de votre choix dont vous aurez au préalab
 
 Récupérer la liste des températures journalières sur Paris en France entre 2019 et 2022. (1 température moyenne par jour, 
 à trouver ou à recalculer).
+/////////////////////////////////////
 
 
 ++Data analyse VISUALISATION. - (Sur un streamlit)++
 
-Calculez entre 2019 et 2022 la somme du nombre d’objets perdus par semaine. Afficher sur un histogramme plotly la répartition de 
-ces valeurs. (un point correspond à une semaine dont la valeur est la somme). (On peut choisir d’afficher ou non certains types d’objet).
+Calculez entre 2019 et 2022 la somme du nombre d’objets perdus par semaine. -----------  FAIT  -----------------
+Afficher sur un histogramme plotly la répartition de ces valeurs. (un point correspond à une semaine dont la valeur est la somme). 
+(On peut choisir d’afficher ou non certains types d’objet).
 
-Afficher une carte de Paris avec le nombre d’objets perdus en fonction de la fréquentation de voyageur de chaque gare. Possibilité de faire varier par année et par type d’objets
+Afficher une carte de Paris avec le nombre d’objets perdus en fonction de la fréquentation de voyageur de chaque gare.
+
+ Possibilité de faire varier par année et par type d’objets
+
+
+/////////////////////////////////////////////////////
+
+
 ++Partie data analyse en vue de la DATA SCIENCE. - (sur un streamlit)++
 
 Afficher le nombre d’objets perdus en fonction de la température sur un scatterplot.
