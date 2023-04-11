@@ -46,7 +46,7 @@ Afficher une carte de Paris avec le nombre d’objets perdus en fonction de la f
 ++Intégrez à votre streamlit la conclusion globale de votre étude.++
 
 
-Voici les chiffres de fréquentation pour les gares que vous avez demandées :
+ fréquentation pour les gares :
 
 Paris Bercy :
     2019 : 4,1 millions de voyageurs
