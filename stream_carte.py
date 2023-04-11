@@ -10,6 +10,7 @@ load_dotenv()
 # Récupération du token Mapbox
 map_token = os.getenv('MAPBOX_TOKEN')
 
+
 # Connexion à la base de données SQLite
 connexion = sqlite3.connect("db_objets_trouves.db")
 
