@@ -45,7 +45,8 @@ Afficher une carte de Paris avec le nombre d’objets perdus en fonction de la f
 
 Afficher le nombre d’objets perdus en fonction de la température sur un scatterplot.
  Est ce que le nombre d’objets perdus est corrélé à la temperature d'après ce graphique?
-Quelle est la médiane du nombre d’objets perdus en fonction de la saison? Il y a t il une correlation entre ces deux variables d'après 
+Quelle est la médiane du nombre d’objets perdus en fonction de la saison? 
+Il y a t il une correlation entre ces deux variables d'après 
 le graphique?
 Affichez le nombre d'objets perdus en fonction du type de d'objet et de la saison sur un graphique. Il y a t il une correlation entre 
 ces deux variables d'après le graphique?
