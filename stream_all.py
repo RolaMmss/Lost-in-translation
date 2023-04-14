@@ -221,9 +221,10 @@ elif onglet == "saison":
     
 # saison ///////////////////////////////////////////////////////////////////////////////////////
 elif onglet == "saison median":
+    # titre de l'application Streamlit
     st.title("Distribution du nombre d'objets perdus par saison")
 
-        # lire les données de la table "meteo_objets_trouves" dans un DataFrame pandas
+    # lire les données de la table "meteo_objets_trouves" dans un DataFrame pandas
     df = pd.read_sql_query("SELECT date, temperature, nbr_perdu FROM meteo_objets_trouves", connexion)
 
     # convertir la colonne "date" en datetime
@@ -234,12 +235,24 @@ elif onglet == "saison median":
                         [0, 3.21, 6.21, 9.23, 31.21],
                         labels=['hiver', 'printemps', 'été', 'automne'], include_lowest=True)
 
-    # Calculer la médiane du nombre d'objets perdus par saison
-    mediane_nbr_perdu_par_saison = df.groupby('saison')['nbr_perdu'].median()
+    # Ajouter une colonne "année" basée sur la colonne "date"
+    df['année'] = df['date'].dt.year
 
-    # Créer un boxplot avec Plotly Express
-    fig = px.box(df, x="saison", y="nbr_perdu", color="saison",
-                title="")
+    # Sélectionner les années disponibles dans les données
+    années_disponibles = df['année'].unique()
+
+    # Sélectionner l'année à afficher à partir d'un sélecteur
+    année_selectionnée = st.selectbox('Sélectionner une année', années_disponibles)
+
+    # Filtrer les données pour l'année sélectionnée
+    df_année_selectionnée = df[df['année'] == année_selectionnée]
+
+    # Calculer la médiane du nombre d'objets perdus par saison pour l'année sélectionnée
+    mediane_nbr_perdu_par_saison = df_année_selectionnée.groupby('saison')['nbr_perdu'].median()
+
+    # Créer un boxplot avec Plotly Express pour l'année sélectionnée
+    fig = px.box(df_année_selectionnée, x="saison", y="nbr_perdu", color="saison",
+                title=f"Distribution du nombre d'objets perdus par saison pour l'année {année_selectionnée}")
     fig.update_traces(marker=dict(line=dict(width=0.5, color='DarkSlateGrey')))
     st.plotly_chart(fig)
 
