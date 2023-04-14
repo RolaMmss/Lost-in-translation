@@ -16,7 +16,8 @@ onglet = st.sidebar.selectbox("Choisissez un onglet", ["Histogramme", "Carte obj
 
 # Histogramme  ///////////////////////////////////////////////////////////////////////////////////////
 if onglet == "Histogramme":
-
+        # affichage du titre
+    st.title("Histogramme des nombre d'objets perdus par rapport a la date et le type d'objets ")
 
     # lire le fichier CSV dans un DataFrame pandas
     df = pd.read_csv("objets-trouves.csv")
@@ -65,11 +66,11 @@ if onglet == "Histogramme":
         filtered_data = df[(df["annee"] == annee) & (df["mois"] == mois_fr.index(mois)) & (df["gare"] == gare)]
 
     # Affichage du nombre d'objets perdus dans le titre
-    title = f"Nombre d'objets perdus en {mois} {annee} à la gare {gare}"
-    if select_type_objet != "Tous":
-        title += f" pour le type d'objet : {select_type_objet}"
-    title += f" il y à  {len(filtered_data)} objets"
-    st.title(title)
+    # title = f"Nombre d'objets perdus en {mois} {annee} à la gare {gare}"
+    # if select_type_objet != "Tous":
+    #     title += f" pour le type d'objet : {select_type_objet}"
+    # title += f" il y à  {len(filtered_data)} objets"
+    # st.title(title)
 
     # Affichage de l'histogramme dans Streamlit
     st.plotly_chart(px.histogram(filtered_data, x="date", nbins=len(filtered_data), 
@@ -78,6 +79,8 @@ if onglet == "Histogramme":
 
     # Carte ///////////////////////////////////////////////////////////////////////////////////////
 elif onglet == "Carte objet perdu":
+    st.title("Objets trouvés dans les gares par type d'objets ")
+    
     
     # Connexion à la base de données SQLite
     connexion = sqlite3.connect("db_objets_trouves.db")
@@ -135,7 +138,8 @@ elif onglet == "Carte objet perdu":
     
 # Carte ///////////////////////////////////////////////////////////////////////////////////////
 elif onglet == "Carte frequantation":
-    
+    st.title("Carte frequentation dans les gares de Paris ")
+
     # Connexion à la base de données SQLite
     connexion = sqlite3.connect("db_objets_trouves.db")
 
@@ -186,13 +190,14 @@ elif onglet == "Scatter":
     # affichage du scatterplot avec la droite de régression linéaire
     fig = px.scatter(df, x="temperature", y="nbr_perdu")
     fig.add_scatter(x=df["temperature"], y=poly1d_fn(df["temperature"]), mode="lines", name="regression line")
-
+    st.write(" Après avoir effectué l'analyse, il n'a pas été trouvé de corrélation significative entre le nombre d'objets perdus et la température. En effet, la droite de régression linéaire obtenue ne montre pas une évolution nette du nombre d'objets perdus en fonction de la température. Ainsi, on peut conclure que la température n'a pas d'impact direct sur le nombre d'objets perdus dans cette étude.  ")
     # Affichage de la figure dans Streamlit
     st.plotly_chart(fig)
     
 # saison ///////////////////////////////////////////////////////////////////////////////////////
 elif onglet == "saison":
-    
+    st.title("nombre d'objets perdus par saison")
+
     # lire les données de la table "meteo_objets_trouves" dans un DataFrame pandas
     df = pd.read_sql_query("SELECT date, temperature, nbr_perdu FROM meteo_objets_trouves", connexion)
 
@@ -201,7 +206,7 @@ elif onglet == "saison":
 
     # Ajouter une colonne "saison" basée sur les mois et les jours
     df['saison'] = pd.cut(df['date'].dt.month + df['date'].dt.day / 100,
-                        [0, 3.21, 6.21, 9.23, 12.21],
+                        [0, 3.21, 6.21, 9.23, 31.21],
                         labels=['hiver', 'printemps', 'été', 'automne'], include_lowest=True)
 
     # Calculer la médiane du nombre d'objets perdus par saison
@@ -210,13 +215,14 @@ elif onglet == "saison":
     
 
     fig = px.histogram(df, x="saison", y="nbr_perdu", color="saison",
-                    title="nombre d'objets perdus par saison")
+                    title=" ")
     fig.update_traces(marker=dict(line=dict(width=0.5, color='DarkSlateGrey')))
     st.plotly_chart(fig)
     
 # saison ///////////////////////////////////////////////////////////////////////////////////////
 elif onglet == "saison median":
-    
+    st.title("Distribution du nombre d'objets perdus par saison")
+
         # lire les données de la table "meteo_objets_trouves" dans un DataFrame pandas
     df = pd.read_sql_query("SELECT date, temperature, nbr_perdu FROM meteo_objets_trouves", connexion)
 
@@ -225,7 +231,7 @@ elif onglet == "saison median":
 
     # Ajouter une colonne "saison" basée sur les mois et les jours
     df['saison'] = pd.cut(df['date'].dt.month + df['date'].dt.day / 100,
-                        [0, 3.21, 6.21, 9.23, 12.21],
+                        [0, 3.21, 6.21, 9.23, 31.21],
                         labels=['hiver', 'printemps', 'été', 'automne'], include_lowest=True)
 
     # Calculer la médiane du nombre d'objets perdus par saison
@@ -233,7 +239,7 @@ elif onglet == "saison median":
 
     # Créer un boxplot avec Plotly Express
     fig = px.box(df, x="saison", y="nbr_perdu", color="saison",
-                title="Distribution du nombre d'objets perdus par saison")
+                title="")
     fig.update_traces(marker=dict(line=dict(width=0.5, color='DarkSlateGrey')))
     st.plotly_chart(fig)
 
